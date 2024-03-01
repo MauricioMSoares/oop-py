@@ -19,21 +19,27 @@ class Restaurant:
         for restaurant in cls.restaurants:
             print(f'{restaurant._name.ljust(25)} | {restaurant._category.ljust(25)} | {str(restaurant.calc_rating).ljust(25)} | {restaurant.active.ljust(25)}')
 
+    """Returns a custom phrase based on _active property's value"""
     @property
     def active(self):
         return 'Active' if self._active else 'Inactive'
     
+    """Alters the _active value between True and False"""
     def alter_state(self):
         self._active = not self._active
 
+    """Adds a Rating object to the restaurant's rating list"""
     def add_rating(self, customer, grade):
-        rating = Rating(customer, grade)
-        self._ratings.append(rating)
+        if 0 < grade < 5:
+            rating = Rating(customer, grade)
+            self._ratings.append(rating)
 
+    """Calculates the average value of the ratings inside the array"""
     @property
     def calc_rating(self):
         if not self._ratings:
-            return 0
+            return '-'
+        
         ratings_sum = sum(rating._grade for rating in self._ratings)
         ratings_len = len(self._ratings)
         ratings_avg = round(ratings_sum / ratings_len, 1)
