@@ -14,5 +14,3 @@ class Song:
         for song in Song.songs:
             print(f'{song.name} | {song.artist} | {song.duration}')
 
-song = Song('Sonata No. 14', 'Beethoven', '15:00')
-Song.list_songs()

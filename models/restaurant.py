@@ -22,7 +22,3 @@ class Restaurant:
     
     def alter_state(self):
         self._active = not self._active
-
-restaurant = Restaurant('Washoku no Ie', 'Japanese')
-restaurant.alter_state()
-Restaurant.list_restaurants()

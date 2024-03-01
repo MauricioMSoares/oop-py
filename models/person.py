@@ -16,11 +16,3 @@ class Person:
 
     def birthday(self):
         self._age += 1
-
-person = Person('Naomi', 'Project Manager', 25)
-print(person)
-
-person.birthday()
-print(person)
-
-print(person.salutation)
