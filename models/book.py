@@ -23,7 +23,7 @@ class Book:
 
         for book in Book.books:
             if book._release_year == year:
-                available_books.append(book)
+                available_books.append(book._title)
 
         return available_books
     
