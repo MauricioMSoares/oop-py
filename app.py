@@ -2,8 +2,19 @@ from models.restaurant import Restaurant
 from models.song import Song
 from models.person import Person
 from models.book import Book
+from models.menu.menu_item import MenuItem
+from models.menu.dish import Dish
+from models.menu.drink import Drink
 
 def main():
+    pass
+
+def menu_test():
+    restaurant = Restaurant("Washoku no Ie", "Japanese")
+    drink = Drink("Orange Juice", 4.90, 'Large')
+    dish = Dish("Croissant", 6.90, "The original flavour of France")
+
+def test():
     restaurant = Restaurant("Washoku no Ie", "Japanese")
     restaurant.alter_state()
     restaurant.add_rating('Leah', 5)
