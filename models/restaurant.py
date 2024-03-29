@@ -64,6 +64,9 @@ class Restaurant:
             if hasattr(item, 'desc'):
                 message_dish = f'{i}. Name: {item._name} | Price: ${item._price}\n{item.desc}'
                 print(message_dish)
+            elif hasattr(item, 'type'):
+                message_dessert = f'{i}. Name: {item._name} | Price: ${item._price} | Type: {item.type} | Size: {item.size}'
+                print(message_dessert)
             else:
                 message_drink = f'{i}. Name: {item._name} | Price: ${item._price} | Size: {item.size}'
                 print(message_drink)

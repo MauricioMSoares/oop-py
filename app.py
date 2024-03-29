@@ -5,6 +5,7 @@ from models.book import Book
 from models.menu.menu_item import MenuItem
 from models.menu.dish import Dish
 from models.menu.drink import Drink
+from models.menu.dessert import Dessert
 
 def main():
     menu_test()
@@ -13,9 +14,15 @@ def menu_test():
     restaurant = Restaurant("Washoku no Ie", "Japanese")
     drink = Drink("Orange Juice", 4.90, 'Large')
     dish = Dish("Croissant", 6.90, "The original flavour of France")
+    dessert = Dessert("Brigadeiro", 2.90, "Brazilian Confectionery", "Medium")
+
+    drink.apply_discount()
+    dish.apply_discount()
+    dessert.apply_discount()
 
     restaurant.add_at_menu(drink)
     restaurant.add_at_menu(dish)
+    restaurant.add_at_menu(dessert)
     restaurant.show_menu
 
 def test():
