@@ -7,12 +7,16 @@ from models.menu.dish import Dish
 from models.menu.drink import Drink
 
 def main():
-    pass
+    menu_test()
 
 def menu_test():
     restaurant = Restaurant("Washoku no Ie", "Japanese")
     drink = Drink("Orange Juice", 4.90, 'Large')
     dish = Dish("Croissant", 6.90, "The original flavour of France")
+
+    restaurant.add_at_menu(drink)
+    restaurant.add_at_menu(dish)
+    restaurant.show_menu
 
 def test():
     restaurant = Restaurant("Washoku no Ie", "Japanese")
