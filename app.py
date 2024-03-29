@@ -7,12 +7,28 @@ from models.menu.dish import Dish
 from models.menu.drink import Drink
 from models.menu.dessert import Dessert
 
+import requests
+
+
 def main():
-    menu_test()
+    api_call()
+
+
+def api_call():
+    url = "https://guilhermeonrails.github.io/api-restaurantes/restaurantes.json"
+    response = requests.get(url)
+    print(response)
+
+    if response.status_code == 200:
+        data = response.json()
+        print(data)
+    else:
+        print(f'Error: {response.status_code}')
+
 
 def menu_test():
     restaurant = Restaurant("Washoku no Ie", "Japanese")
-    drink = Drink("Orange Juice", 4.90, 'Large')
+    drink = Drink("Orange Juice", 4.90, "Large")
     dish = Dish("Croissant", 6.90, "The original flavour of France")
     dessert = Dessert("Brigadeiro", 2.90, "Brazilian Confectionery", "Medium")
 
@@ -25,10 +41,11 @@ def menu_test():
     restaurant.add_at_menu(dessert)
     restaurant.show_menu
 
+
 def test():
     restaurant = Restaurant("Washoku no Ie", "Japanese")
     restaurant.alter_state()
-    restaurant.add_rating('Leah', 5)
+    restaurant.add_rating("Leah", 5)
     Restaurant.list_restaurants()
 
     Song("Sonata No. 14", "Beethoven", "15:00")
@@ -40,11 +57,12 @@ def test():
     print(person)
     print(person.salutation)
 
-    book = Book('Tabibito no Ryokou', 'Naomi Kawazaki', 2004)
+    book = Book("Tabibito no Ryokou", "Naomi Kawazaki", 2004)
     print(book)
     print(Book.check_availability(2004))
     book.lend()
     print(book)
+
 
 if __name__ == "__main__":
     main()
