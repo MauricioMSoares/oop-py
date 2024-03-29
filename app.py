@@ -8,6 +8,7 @@ from models.menu.drink import Drink
 from models.menu.dessert import Dessert
 
 import requests
+import json
 
 
 def main():
@@ -21,9 +22,28 @@ def api_call():
 
     if response.status_code == 200:
         data = response.json()
-        print(data)
+        restaurant_data = {}
+        for item in data:
+            name = item["Company"]
+            if name not in restaurant_data:
+                restaurant_data[name] = []
+
+            restaurant_data[name].append(
+                {
+                    "item": item["Item"],
+                    "price": item["price"],
+                    "desc": item["description"],
+                }
+            )
+
     else:
-        print(f'Error: {response.status_code}')
+        print(f"Error: {response.status_code}")
+
+    for name, data in restaurant_data.items():
+        file_name = f"{name}.json"
+        with open(file_name, "w") as file:
+            json.dump(data, file, indent=4)
+
 
 
 def menu_test():
